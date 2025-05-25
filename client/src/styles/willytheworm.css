@@ -1,0 +1,428 @@
+/* Willy the Worm - Classic 1985 EGA Style CSS */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 20px;
+  background-color: #000000;
+  font-family: 'Courier New', 'Lucida Console', monospace;
+}
+
+/* Main Container */
+.willy-container {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  background-color: #000040;
+  color: #00ff00;
+  border: 3px solid #0080ff;
+  box-shadow: 0 0 20px #0080ff;
+}
+
+/* Header */
+.game-header {
+  background-color: #000080;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid #0080ff;
+}
+
+.header-title h2 {
+  margin: 0;
+  color: #ffff00;
+  font-size: 24px;
+  text-shadow: 2px 2px 0px #000000;
+  letter-spacing: 1px;
+}
+
+.header-subtitle {
+  color: #00ff00;
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+.header-nav {
+  display: flex;
+  gap: 5px;
+}
+
+.nav-button {
+  background-color: #004080;
+  color: #ffffff;
+  border: 2px solid #0080ff;
+  padding: 8px 16px;
+  cursor: pointer;
+  font-family: 'Courier New', monospace;
+  font-size: 14px;
+  transition: all 0.2s;
+  text-transform: uppercase;
+}
+
+.nav-button:hover {
+  background-color: #0060c0;
+  color: #ffff00;
+}
+
+.nav-button.active {
+  background-color: #0080ff;
+  color: #ffff00;
+  font-weight: bold;
+}
+
+/* Main Content */
+.game-main {
+  padding: 20px;
+  min-height: 600px;
+}
+
+/* Menu Screen */
+.menu-screen {
+  text-align: center;
+}
+
+.title-section {
+  margin-bottom: 40px;
+}
+
+.game-title {
+  font-size: 48px;
+  color: #ffff00;
+  margin: 0;
+  text-shadow: 3px 3px 0px #000000, 6px 6px 0px #800000;
+  letter-spacing: 3px;
+  animation: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+  from { text-shadow: 3px 3px 0px #000000, 6px 6px 0px #800000, 0 0 20px #ffff00; }
+  to { text-shadow: 3px 3px 0px #000000, 6px 6px 0px #800000, 0 0 30px #ffff00, 0 0 40px #ffff00; }
+}
+
+.subtitle {
+  color: #00ff00;
+  font-size: 18px;
+  margin-top: 10px;
+  letter-spacing: 1px;
+}
+
+.menu-description {
+  max-width: 700px;
+  margin: 0 auto 40px auto;
+  line-height: 1.8;
+  font-size: 16px;
+  text-align: left;
+  color: #ffffff;
+}
+
+.menu-description p {
+  margin-bottom: 20px;
+}
+
+.menu-actions {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+
+.menu-button {
+  background-color: #008000;
+  color: #ffffff;
+  border: 3px solid #00ff00;
+  padding: 15px 30px;
+  font-size: 18px;
+  font-family: 'Courier New', monospace;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.3s;
+}
+
+.menu-button:hover {
+  background-color: #00ff00;
+  color: #000000;
+  box-shadow: 0 0 15px #00ff00;
+}
+
+/* Game Screen */
+.game-screen {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.game-area {
+  position: relative;
+  background-color: #000080;
+  border: 3px solid #0080ff;
+  padding: 10px;
+}
+
+.game-grid {
+  background-color: #000040;
+  border: 2px solid #808080;
+  overflow: hidden;
+}
+
+.grid-row {
+  display: flex;
+  height: 16px;
+  line-height: 16px;
+}
+
+.grid-cell {
+  width: 16px;
+  height: 16px;
+  font-size: 14px;
+  text-align: center;
+  line-height: 16px;
+  font-family: 'Courier New', monospace;
+  color: #ffffff;
+  background-color: transparent;
+}
+
+.grid-cell[data-content="═"] {
+  color: #ffffff;
+  background-color: #808080;
+}
+
+.grid-cell[data-content="║"] {
+  color: #ffff00;
+}
+
+.grid-cell[data-content="☼"] {
+  color: #ff8000;
+  animation: sparkle 1s ease-in-out infinite alternate;
+}
+
+.grid-cell[data-content="♪"] {
+  color: #ff00ff;
+  animation: bell-glow 1.5s ease-in-out infinite alternate;
+}
+
+.grid-cell[data-content="@"] {
+  color: #00ff00;
+  background-color: #004000;
+  animation: willy-move 0.5s ease-in-out infinite alternate;
+}
+
+.grid-cell[data-content="o"] {
+  color: #ff0000;
+  animation: bounce 1s ease-in-out infinite;
+}
+
+@keyframes sparkle {
+  from { color: #ff8000; }
+  to { color: #ffff00; }
+}
+
+@keyframes bell-glow {
+  from { color: #ff00ff; }
+  to { color: #ffffff; }
+}
+
+@keyframes willy-move {
+  from { background-color: #004000; }
+  to { background-color: #008000; }
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-2px); }
+}
+
+/* Game HUD */
+.game-hud {
+  background-color: #000080;
+  border: 2px solid #0080ff;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.game-hud span {
+  color: #ffff00;
+}
+
+/* Game Controls */
+.game-controls {
+  text-align: center;
+  color: #00ff00;
+  font-size: 14px;
+}
+
+.game-controls p {
+  margin: 10px 0;
+}
+
+.game-button {
+  background-color: #800080;
+  color: #ffffff;
+  border: 2px solid #ff00ff;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-family: 'Courier New', monospace;
+  cursor: pointer;
+  margin: 5px;
+  text-transform: uppercase;
+}
+
+.game-button:hover {
+  background-color: #ff00ff;
+  color: #000000;
+}
+
+/* Game Overlays */
+.game-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 64, 0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 3px solid #ffff00;
+}
+
+.overlay-message {
+  background-color: #000080;
+  border: 3px solid #ffff00;
+  padding: 30px;
+  text-align: center;
+  color: #ffffff;
+}
+
+.overlay-message h3 {
+  color: #ffff00;
+  font-size: 24px;
+  margin: 0 0 20px 0;
+  text-shadow: 2px 2px 0px #000000;
+}
+
+.overlay-message p {
+  font-size: 18px;
+  margin: 10px 0;
+  color: #00ff00;
+}
+
+/* Editor Screen */
+.editor-screen {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.editor-area {
+  background-color: #000080;
+  border: 3px solid #0080ff;
+  padding: 10px;
+}
+
+.editor-grid {
+  background-color: #000040;
+  border: 2px solid #808080;
+  overflow: hidden;
+}
+
+.editor-cell {
+  cursor: crosshair;
+  transition: background-color 0.1s;
+}
+
+.editor-cell:hover {
+  background-color: #404040;
+}
+
+/* Editor Toolbar */
+.editor-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  background-color: #000080;
+  padding: 15px;
+  border: 2px solid #0080ff;
+  justify-content: center;
+}
+
+.tool-button {
+  background-color: #004080;
+  color: #ffffff;
+  border: 2px solid #0080ff;
+  padding: 10px 15px;
+  cursor: pointer;
+  font-family: 'Courier New', monospace;
+  font-size: 14px;
+  transition: all 0.2s;
+  min-width: 80px;
+}
+
+.tool-button:hover {
+  background-color: #0060c0;
+  color: #ffff00;
+}
+
+.tool-button.active {
+  background-color: #00ff00;
+  color: #000000;
+  font-weight: bold;
+}
+
+.action-button {
+  background-color: #800000;
+  border-color: #ff0000;
+}
+
+.action-button:hover {
+  background-color: #ff0000;
+  color: #ffffff;
+}
+
+/* Editor Instructions */
+.editor-instructions {
+  text-align: center;
+  color: #00ff00;
+  font-size: 14px;
+  background-color: #000080;
+  padding: 10px;
+  border: 2px solid #0080ff;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .game-header {
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .header-nav {
+    justify-content: center;
+  }
+  
+  .game-title {
+    font-size: 32px;
+  }
+  
+  .menu-actions {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .editor-toolbar {
+    justify-content: flex-start;
+  }
+  
+  .tool-button {
+    min-width: 70px;
+    font-size: 12px;
+    padding: 8px 12px;
+  }
+}
